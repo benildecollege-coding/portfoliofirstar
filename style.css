@@ -1,0 +1,1151 @@
+/* =======================================================
+   BASIC RESET & GLOBAL STYLES
+   ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff87a;
+    padding-top: 80px;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* =======================================================
+   NAVBAR - FIXED TOP
+   ======================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c7a109;
+    color: white;
+    padding: 15px 35px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.navbar-logo .star-icon {
+    font-size: 28px;
+    color: #f1c40f;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    margin-right: 8px;
+}
+
+.navbar-logo:hover .star-icon {
+    transform: rotate(360deg);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffe02e;
+}
+
+/* =======================================================
+   BACKGROUND BLOBS - HOME PAGE ATMOSPHERE
+   ======================================================= */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.blob-1 {
+    top: 10%;
+    left: 20%;
+    width: 300px;
+    height: 300px;
+    background: #0b701c;
+}
+
+.blob-2 {
+    bottom: 10%;
+    right: 20%;
+    width: 300px;
+    height: 300px;
+    background: #0c6e2a;
+}
+
+
+/* =======================================================
+   LOADING OVERLAY - GLOBAL (KEEP SAME)
+   ======================================================= */
+.loading-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(255,255,255,0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    display: none !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 999999 !important;
+}
+
+.loading-overlay.active {
+    display: flex !important;
+}
+
+.loading-content {
+    text-align: center;
+    background: rgb(253, 251, 121);
+    padding: 3.5rem 3rem;
+    border-radius: 24px;
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.2),
+        0 0 0 1px rgba(255,255,255,0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.particle-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+        rgba(102,126,234,0.1) 0%, 
+        rgba(118,75,162,0.1) 50%,
+        rgba(255,107,107,0.1) 100%);
+    box-shadow: inset 0 0 30px rgba(0,123,255,0.1);
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: particleFloat 4s infinite ease-in-out;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.p1 { background: linear-gradient(135deg, #667eea, #764ba2); left: 10%; top: 20%; animation-delay: 0s; }
+.p2 { background: linear-gradient(135deg, #ff6b6b, #ee5a24); left: 30%; top: 10%; animation-delay: 0.2s; }
+.p3 { background: linear-gradient(135deg, #feca57, #ff9ff3); left: 60%; top: 15%; animation-delay: 0.4s; }
+.p4 { background: linear-gradient(135deg, #48dbfb, #0abde3); left: 80%; top: 40%; animation-delay: 0.6s; }
+.p5 { background: linear-gradient(135deg, #10ac84, #1dd1a1); left: 20%; top: 60%; animation-delay: 0.8s; }
+.p6 { background: linear-gradient(135deg, #ff9ff3, #feca57); left: 50%; top: 70%; animation-delay: 1s; }
+.p7 { background: linear-gradient(135deg, #ee5a24, #ff6b6b); left: 70%; top: 80%; animation-delay: 1.2s; }
+.p8 { background: linear-gradient(135deg, #0abde3, #48dbfb); left: 15%; top: 50%; animation-delay: 1.4s; }
+.p9 { background: linear-gradient(135deg, #1dd1a1, #10ac84); left: 40%; top: 30%; animation-delay: 1.6s; }
+
+@keyframes particleFloat {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1) rotate(0deg); 
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(15px, -15px) scale(1.3) rotate(90deg); 
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-10px, 10px) scale(0.8) rotate(180deg); 
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(10px, -5px) scale(1.2) rotate(270deg); 
+        opacity: 0.9;
+    }
+}
+
+.loading-overlay p {
+    font-size: 1.3rem;
+    color: #555;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+/* =======================================================
+   HOME PAGE - ENVELOPE INTERACTION
+   ======================================================= */
+
+   .envelope {
+    width: 660px;
+    height: 480px;
+    background: #ecf0f1;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.7s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    
+    /* CENTERING */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 20px;
+}
+
+.envelope::after {
+    content: '📬';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    z-index: 3;
+    transition: opacity 0.4s;
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.content {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: white;
+    border-radius: 15px;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.5s 0.3s;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.content h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.content p {
+    color: #7f8c8d;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+}
+
+.envelope.open::before {
+    transform: scaleX(0);
+}
+
+.envelope.open::after {
+    opacity: 0;
+}
+
+.envelope.open .content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.envelope:hover:not(.open) {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.star-sticker {
+    font-size: 28px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(255,215,0,0.5);
+    margin-bottom: 10px;
+    animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.enjoy-text {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+
+/* =======================================================
+   HOME PAGE - PORTFOLIO CONTAINER & SIDEBAR
+   ======================================================= */
+.tarot-spread {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    min-height: calc(100vh - 100px);
+    position: relative;
+    perspective: 1200px;
+}
+
+/* TAROT POSITIONS - 3 TOP / 3 BOTTOM */
+.tarot-position {
+    position: absolute;
+}
+
+.center-card {
+    top: 29%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    width: 320px;
+    height: 420px;
+
+}
+
+/* TOP ROW - UNCHANGED */
+.top-left-1 {
+    top: 12%;
+    left: 15%;
+    transform: rotate(-20deg) translateX(-120px) translateY(-80px);
+    z-index: 8;
+    
+}
+
+.top-center {
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg) translateY(-120px);
+    z-index: 10;
+}
+
+.top-right-1 {
+    top: 12%;
+    right: 15%;
+    transform: rotate(20deg) translateX(120px) translateY(-80px);
+    z-index: 8;
+}
+
+/* BOTTOM ROW - MOVED DOWN MORE */
+.bottom-left-1 {
+    bottom: -5%;  
+    left: 12%;
+    transform: rotate(-12deg) translateX(-100px) translateY(120px);
+    z-index: 8;
+}
+
+.bottom-center {
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg) translateY(150px);
+    z-index: 10;
+}
+
+.bottom-right-1 {
+    bottom: -5%;
+    right: 9%;
+    transform: rotate(12deg) translateX(100px) translateY(120px);
+    z-index: 8;
+    width: 320px;
+    height: 420px;
+}
+
+.tarot-symbol {
+    top: 15px;
+    right: 5%;
+    left: 25px;
+}
+
+/* ALL TAROT CARDS */
+.tarot-card {
+    width: 260px;
+    height: 360px;
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.20), 
+        rgba(255, 255, 255, 0.10));
+    border-radius: 28px;
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(30px);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+
+.center-card .tarot-card {
+    width: 340px;
+    height: 440px;
+}
+
+.tarot-card:hover {
+    box-shadow: 
+        0 60px 120px rgba(0, 0, 0, 0.65),
+        0 0 60px rgba(255, 215, 0, 0.4) !important;
+    z-index: 25 !important;
+}
+
+/* GLOW EFFECT */
+.card-glow {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: conic-gradient(
+        from 0deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 215, 0, 0.3),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    border-radius: 32px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.tarot-card:hover .card-glow {
+    opacity: 1;
+    box-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
+}
+
+/* SYMBOLS */
+.tarot-symbol {
+    position: absolute;
+    top: 25px;
+    right: 28px;
+    font-size: 2.8rem;
+    color: rgba(255, 215, 0, 0.95);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    z-index: 3;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+    to { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+}
+
+/* PROFILE CENTER CARD */
+.profile-tarot {
+    padding: 45px 35px;
+    text-align: center;
+}
+
+.profile-image-container {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    margin: 0 auto 30px;
+}
+
+.center-card .profile-image-container {
+    width: 180px;
+    height: 180px;
+}
+
+.profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-text h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.65rem;
+    background: linear-gradient(135deg, #07206f, rgba(8, 11, 72, 0.9));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.profile-text h3 {
+    color: rgba(14, 32, 90, 0.95);
+    font-size: 1.15rem;
+    margin: 0 0 25px 0;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+}
+
+.status-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a1a;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 
+        0 15px 40px rgba(255, 215, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+/* all card */ 
+.tarot-card h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: rgb(15, 35, 93);
+    margin: 35px 0 25px 0;
+    letter-spacing: 1.9px;
+    font-center:
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.tarot-content {
+    padding: 0 28px 30px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* COMPACT CONTENT */
+.job-compact, .edu-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.job-role, .edu-title {
+    font-weight: 700;
+    color: #0c1a62;
+    font-size: 1rem;
+}
+
+.job-date, .edu-date {
+    color: #FFD700;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+
+/* SKILLS */
+.skills-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    padding: 25px 20px;
+}
+
+.skills-compact span {
+    background: rgba(255,255,255,0.25);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    font-weight: 600;
+    text-align: center;
+}
+
+.skills-compact span:hover {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a1a;
+}
+
+/* CONTACT */
+.contact-compact {
+    padding: 25px 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contact-compact a {
+    color: #0c1a62;
+    text-decoration: none;
+    padding: 13px 20px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    font-weight: 559;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.contact-compact a:hover {
+    background: rgba(255,255,255,0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+
+/* =======================================================
+   EXPLORE PAGE - 8 CARDS GRID
+   ======================================================= */
+.section-container {
+    width: 100%;
+    max-width: 2400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 25px;
+    padding: 50px 20px;
+    perspective: 1000px;
+}
+
+.card-wrapper:nth-child(1) { transform: rotate(2deg); }
+.card-wrapper:nth-child(2) { transform: rotate(-1deg); }
+.card-wrapper:nth-child(3) { transform: rotate(1deg); }
+.card-wrapper:nth-child(4) { transform: rotate(-2deg); }
+.card-wrapper:nth-child(5) { transform: rotate(3deg); }
+.card-wrapper:nth-child(6) { transform: rotate(-3deg); }
+
+.card {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.02);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(45deg, #ff9999, #ff8192, #66b3ff);
+    border-radius: 50%;
+    filter: blur(40px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.card:hover .card-glow {
+    opacity: 0.8;
+}
+
+.card-content {
+    transform: translateZ(50px);
+    text-align: center;
+    padding: 15px 10px;
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.card-content img {
+    width: 260px;        
+    height: 400px;       
+    max-width: 200%;     
+    object-position: center;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    display: block;
+    flex-shrink: 0;
+}
+
+.card-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: #000000;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-shrink: 0;
+    padding: 0 5px;
+}
+
+.btn {
+    padding: 10px 25px;
+    background: linear-gradient(45deg, #fff, #f0f0f0);
+    color: #333;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transform: translateZ(30px);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #1f56a8, #0f3460);
+    color: white;
+    box-shadow: 0 10px 25px rgba(31, 86, 168, 0.4);
+    transform: translateZ(40px) translateY(-2px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-15px) rotateX(2deg); }
+}
+
+.card-wrapper:nth-child(odd) {
+    animation: float 6s ease-in-out infinite;
+}
+
+.card-wrapper:nth-child(even) {
+    animation: float 6s ease-in-out infinite 3s;
+}
+
+/* =======================================================
+   VMA
+   ======================================================= */
+
+/* Hero Section */
+.hero {
+    height: 60vh;
+    background: linear-gradient(135deg, #fff87a 0%, #c7a109 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    background: linear-gradient(135deg, #1a1a1a, #c7a109);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.4rem;
+    color: #333;
+    margin-top: 10px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: 300px;
+    gap: 25px;
+}
+/* =======================================================
+   PHOTOGRAPHY GALLERY - NO CARDS
+   ======================================================= */
+
+/* Photo Gallery - FIXED SIZING & SPACING */
+.photo-gallery {
+    max-width: 1400px; /* Reduced from 1600px */
+    margin: 0 auto;
+    padding: 80px 20px; /* Reduced top padding */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Smaller min width */
+    grid-auto-rows: 280px; /* Slightly smaller rows */
+    gap: 30px 35px; /* More horizontal spacing */
+}
+
+.photo-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.photo-item:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+}
+
+.photo-item.landscape { 
+    grid-row: span 1; 
+    aspect-ratio: 16/9; 
+}
+
+.photo-item.square { 
+    grid-row: span 1; 
+    aspect-ratio: 1/1; 
+}
+
+.photo-item.portrait { 
+    grid-row: span 2; 
+    aspect-ratio: 2/3; 
+    margin-top: 12.4rem;
+}
+
+/* Overlay */
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: white;
+    padding: 25px 20px 20px; /* Slightly smaller padding */
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.photo-item:hover .photo-overlay {
+    transform: translateY(0);
+}
+
+.photo-overlay h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; /* Slightly smaller */
+    margin: 0 0 5px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.photo-category {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; /* Slightly smaller */
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+/* Responsive - IMPROVED */
+@media (max-width: 1200px) {
+    .photo-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
+        gap: 25px;
+        padding: 50px 15px;
+    }
+    
+    .photo-gallery .photo-item.portrait {
+        grid-row: span 1;
+        aspect-ratio: 3/4; /* Better mobile portrait */
+    }
+    
+    .photo-gallery .photo-item.landscape {
+        aspect-ratio: 4/3; /* Better mobile landscape */
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-gallery {
+        padding: 40px 10px;
+        gap: 20px;
+    }
+}
+
+
+/* =======================================================
+   CONTACT
+   ======================================================= */
+
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+    margin-top: 70px;
+}
+
+.contact-info {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    background:#050442;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-style: italic;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(241, 196, 15, 0.5);
+}
+
+
+.tarot-card {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    background: rgba(238, 240, 129, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 22px;
+    box-shadow: 
+        0 20px 45px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 40px rgba(241, 196, 15, 0.15);
+    padding: 30px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+
+.tarot-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 0 50px rgba(241, 196, 15, 0.25);
+}
+
+
+.contact-form {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #2c1810;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    height: 44px;
+    letter-spacing: 0.4px;
+}
+
+.form-group textarea {
+    height: 90px;
+    resize: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #8b7355;
+    font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #f3ebc9;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 18px rgba(241, 196, 15, 0.3);
+    transform: translateY(-2px);
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: #050442;
+    z-index: 2;
+}
+
+.textarea-icon {
+    top: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #c7a109 0%, #f1c40f 50%, #d4af37 100%);
+    color: #1a0f0a;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    box-shadow: 0 5px 20px rgba(199, 161, 9, 0.35);
+    font-family: inherit;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(199, 161, 9, 0.45);
+}
+
+.submit-btn.loading span {
+    opacity: 0.7;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -9px;
+    border: 2px solid rgba(26, 15, 10, 0.3);
+    border-top: 2px solid #1a0f0a;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.form-message {
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin: 12px 0;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: none;
+    animation: slideIn 0.3s ease;
+    font-style: italic;
+}
+
+.form-message.success {
+    background: rgba(34, 139, 34, 0.2);
+    color: #228B22;
+    border: 1px solid rgba(34, 139, 34, 0.4);
+}
+
+
+.contact-details {
+    font-size: 0.82rem;
+    opacity: 0.95;
+    padding: 16px 12px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-style: italic;
+    margin-top: 8px;
+}
+
+.contact-details p {
+    margin-bottom: 6px;
+    line-height: 1.4;
+    color: #050442;
+    text-align: left;
+}
+
+.contact-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* FOOTER - FLUSH BOTTOM NO SPACE */
+.footer {
+    margin-top: 45%;  /* Pushes to bottom */
+}
+
+.footer-bottom {
+    background: #c7a109; padding: 25px 0;
+    text-align: center; color: white;
+    font-weight: bold; font-size: 18px;
+}
